@@ -6,7 +6,7 @@
 
 A vite plugin for compressing image assets
 
-## 安装 (yarn or npm)
+## Install (yarn or npm)
 
 **node version:** >=12.0.0
 
