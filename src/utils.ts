@@ -1,5 +1,5 @@
 import fs from 'fs';
-
+import path from 'path';
 export const isFunction = (arg: unknown): arg is (...args: any[]) => any =>
   typeof arg === 'function';
 
@@ -29,7 +29,7 @@ export function readAllFile(root: string, reg: RegExp, filter?: RegExp | Functio
         // dir
         const files = fs.readdirSync(root);
         files.forEach(function (file) {
-          const t = readAllFile(root + '/' + file, reg, filter);
+          const t = readAllFile(path.join(root, '/', file), reg, filter);
           resultArr = resultArr.concat(t);
         });
       } else {

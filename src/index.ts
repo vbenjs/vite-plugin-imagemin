@@ -38,7 +38,7 @@ export default (options: VitePluginImageMin = {}): Plugin => {
     enforce: 'post',
     configResolved(resolvedConfig: ResolvedConfig) {
       config = resolvedConfig;
-      outputPath = path.posix.resolve(config.root, config.build.outDir);
+      outputPath = path.join(config.root, config.build.outDir);
     },
     async writeBundle() {
       let files = readAllFile(outputPath, extRE, filter) || [];
@@ -92,14 +92,8 @@ function handleOutputLogger(
     (value) => `${Math.floor(100 * value.ratio)}`.length
   );
 
-  const valueSizeLengths = Array.from(
-    recordMap.values(),
-    (value) => `${value.size.toFixed(2)}kb / ${value.oldSize.toFixed(2)}kb`.length
-  );
-
   const maxKeyLength = Math.max(...keyLengths);
   const valueKeyLength = Math.max(...valueLengths);
-  const valueSizeLength = Math.max(...valueSizeLengths);
   recordMap.forEach((value, name) => {
     let { ratio, size, oldSize } = value;
 
