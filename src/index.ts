@@ -97,7 +97,10 @@ function handleOutputLogger(
   recordMap.forEach((value, name) => {
     let { ratio, size, oldSize } = value;
 
-    const rName = normalizePath(name).replace(normalizePath(`${config.root}/dist/`), '');
+    const rName = normalizePath(name).replace(
+      normalizePath(`${config.root}/${config.build.outDir}/`),
+      ''
+    );
     ratio = Math.floor(100 * ratio);
     const fr = `${ratio}`;
 
