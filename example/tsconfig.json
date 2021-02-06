@@ -16,7 +16,6 @@
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "lib": ["dom", "esnext"],
-    "types": ["../client"],
     "incremental": true,
     "skipLibCheck": true
   }

@@ -46,7 +46,7 @@ export default (options: VitePluginImageMin = {}): Plugin => {
         return;
       }
 
-      const recordMap = new Map<string, { size: number; oldSize: number; ratio: number }>();
+      const tinyMap = new Map<string, { size: number; oldSize: number; ratio: number }>();
 
       const handles = files.map(async (filePath: string) => {
         let { mtimeMs, size: oldSize } = await fs.stat(filePath);
@@ -61,20 +61,20 @@ export default (options: VitePluginImageMin = {}): Plugin => {
           config.logger.error('imagemin error:' + filePath);
         }
         const size = content.byteLength;
-        recordMap.set(filePath, {
-          size: size / 1000,
-          oldSize: oldSize / 1000,
+        tinyMap.set(filePath, {
+          size: size / 1024,
+          oldSize: oldSize / 1024,
           ratio: size / oldSize - 1,
         });
         await fs.writeFile(filePath, content);
         mtimeCache.set(filePath, Date.now());
       });
 
-      await Promise.all(handles);
-
-      if (verbose) {
-        handleOutputLogger(config, recordMap);
-      }
+      Promise.all(handles).then(() => {
+        if (verbose) {
+          handleOutputLogger(config, tinyMap);
+        }
+      });
     },
   };
 };
@@ -106,14 +106,15 @@ function handleOutputLogger(
 
     const denseRatio = ratio > 0 ? chalk.red(`+${fr}%`) : ratio < 0 ? chalk.green(`${fr}%`) : '';
 
-    const sizeStr = `${size.toFixed(2)}kb / ${oldSize.toFixed(2)}kb`;
+    const sizeStr = `${oldSize.toFixed(2)}kb / tiny: ${size.toFixed(2)}kb`;
 
     config.logger.info(
-      chalk.gray(config.build.outDir + '/' + chalk.blueBright(rName)) +
+      chalk.dim(config.build.outDir + '/') +
+        chalk.blueBright(rName) +
         ' '.repeat(2 + maxKeyLength - name.length) +
         chalk.gray(`${denseRatio} ${' '.repeat(valueKeyLength - fr.length)}`) +
         ' ' +
-        chalk.gray(sizeStr)
+        chalk.dim(sizeStr)
     );
   });
   config.logger.info('\n');
