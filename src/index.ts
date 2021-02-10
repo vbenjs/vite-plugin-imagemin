@@ -5,6 +5,7 @@ import { normalizePath } from 'vite';
 import { isNotFalse, readAllFile, isBoolean } from './utils';
 import fs from 'fs-extra';
 import chalk from 'chalk';
+import { debug as Debug } from 'debug';
 
 import imagemin from 'imagemin';
 import imageminGif from 'imagemin-gifsicle';
@@ -13,6 +14,8 @@ import imageminOptPng from 'imagemin-optipng';
 import imageminJpeg from 'imagemin-mozjpeg';
 import imageminSvgo from 'imagemin-svgo';
 import imageminWebp from 'imagemin-webp';
+
+const debug = Debug('vite-plugin-imagemin');
 
 const extRE = /\.(png|jpeg|gif|jpg|bmp|svg)$/i;
 
@@ -32,16 +35,21 @@ export default (options: VitePluginImageMin = {}): Plugin => {
     return emptyPlugin;
   }
 
+  debug('plugin options:', options);
+
   return {
     ...emptyPlugin,
     apply: 'build',
     enforce: 'post',
-    configResolved(resolvedConfig: ResolvedConfig) {
+    configResolved(resolvedConfig) {
       config = resolvedConfig;
       outputPath = path.join(config.root, config.build.outDir);
+      debug('resolvedConfig:', resolvedConfig);
     },
     async writeBundle() {
       let files = readAllFile(outputPath, extRE, filter) || [];
+      debug('files:', files);
+
       if (!files.length) {
         return;
       }
@@ -84,7 +92,9 @@ function handleOutputLogger(
   config: ResolvedConfig,
   recordMap: Map<string, { size: number; oldSize: number; ratio: number }>
 ) {
-  config.logger.info(`\n${chalk.cyan('✨ imagemin files result: \n')}`);
+  config.logger.info(
+    `\n${chalk.cyan('✨ [vite-plugin-imagemin]')}` + '- compressed image resource successfully: '
+  );
 
   const keyLengths = Array.from(recordMap.keys(), (name) => name.length);
   const valueLengths = Array.from(
@@ -133,30 +143,36 @@ function getImageminPlugins(options: VitePluginImageMin = {}): imagemin.Plugin[]
 
   const plugins: imagemin.Plugin[] = [];
   if (isNotFalse(gifsicle)) {
+    debug('gifsicle:', true);
     const opt = isBoolean(gifsicle) ? undefined : gifsicle;
     plugins.push(imageminGif(opt));
   }
   if (isNotFalse(webp)) {
+    debug('webp:', true);
     const opt = isBoolean(webp) ? undefined : webp;
     plugins.push(imageminWebp(opt));
   }
 
   if (isNotFalse(mozjpeg)) {
+    debug('mozjpeg:', true);
     const opt = isBoolean(mozjpeg) ? undefined : mozjpeg;
     plugins.push(imageminJpeg(opt));
   }
 
   if (isNotFalse(pngquant)) {
+    debug('pngquant:', true);
     const opt = isBoolean(pngquant) ? undefined : pngquant;
     plugins.push(imageminPng(opt));
   }
 
   if (isNotFalse(optipng)) {
+    debug('optipng:', true);
     const opt = isBoolean(optipng) ? undefined : optipng;
     plugins.push(imageminOptPng(opt));
   }
 
   if (isNotFalse(svgo)) {
+    debug('svgo:', true);
     const opt = isBoolean(svgo) ? undefined : svgo;
     plugins.push(imageminSvgo(opt));
   }

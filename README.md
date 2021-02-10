@@ -126,7 +126,7 @@ MIT
 
 ## Inspiration
 
-[vite-plugin-compress](https://github.com/alloc/vite-plugin-compress/blob/master/src/plugin.ts)
+[vite-plugin-compress](https://github.com/alloc/vite-plugin-compress)
 
 [npm-img]: https://img.shields.io/npm/v/vite-plugin-style-import.svg
 [npm-url]: https://npmjs.com/package/vite-plugin-style-import

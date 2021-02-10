@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-imagemin",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A vite plugin for compressing image assets",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -41,6 +41,7 @@
     "@types/imagemin-svgo": "^8.0.0",
     "@types/imagemin-webp": "^5.1.1",
     "chalk": "^4.1.0",
+    "debug": "^4.3.1",
     "fs-extra": "^9.1.0",
     "imagemin": "^7.0.1",
     "imagemin-gifsicle": "^7.0.0",
@@ -59,6 +60,7 @@
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
+    "@types/debug": "^4.1.5",
     "@types/es-module-lexer": "^0.3.0",
     "@types/fs-extra": "^9.0.6",
     "@types/node": "^14.14.24",
