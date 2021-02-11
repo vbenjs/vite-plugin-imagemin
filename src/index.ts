@@ -2,7 +2,7 @@ import type { Plugin, ResolvedConfig } from 'vite';
 import type { VitePluginImageMin } from './types';
 import path from 'path';
 import { normalizePath } from 'vite';
-import { isNotFalse, readAllFile, isBoolean } from './utils';
+import { isNotFalse, readAllFile, isBoolean, isRegExp, isFunction } from './utils';
 import fs from 'fs-extra';
 import chalk from 'chalk';
 import { debug as Debug } from 'debug';
@@ -29,7 +29,7 @@ export default (options: VitePluginImageMin = {}): Plugin => {
     name: 'vite:imagemin',
   };
 
-  const { disable = false, filter, verbose = true } = options;
+  const { disable = false, filter = extRE, verbose = true } = options;
 
   if (disable) {
     return emptyPlugin;
@@ -47,12 +47,12 @@ export default (options: VitePluginImageMin = {}): Plugin => {
       debug('resolvedConfig:', resolvedConfig);
     },
     async writeBundle() {
-      let files = readAllFile(outputPath, extRE, filter) || [];
+      let files = readAllFile(outputPath) || [];
       debug('files:', files);
 
-      if (!files.length) {
-        return;
-      }
+      if (!files.length) return;
+
+      files = filterFiles(files, filter);
 
       const tinyMap = new Map<string, { size: number; oldSize: number; ratio: number }>();
 
@@ -128,6 +128,23 @@ function handleOutputLogger(
     );
   });
   config.logger.info('\n');
+}
+
+function filterFiles(files: string[], filter: RegExp | ((file: string) => boolean)) {
+  if (filter) {
+    const isRe = isRegExp(filter);
+    const isFn = isFunction(filter);
+    files = files.filter((file) => {
+      if (isRe) {
+        return (filter as RegExp).test(file);
+      }
+      if (isFn) {
+        return (filter as Function)(file);
+      }
+      return true;
+    });
+  }
+  return files;
 }
 
 // imagemin compression plugin configuration

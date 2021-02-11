@@ -20,7 +20,7 @@ export const isRegExp = (arg: unknown): arg is RegExp =>
  * [@param] reg Regular expression for filtering files, optional parameters
  * Note: It can also be deformed to check whether the file path conforms to regular rules. The path can be a folder or a file. The path that does not exist is also fault-tolerant.
  */
-export function readAllFile(root: string, reg: RegExp, filter?: RegExp | Function) {
+export function readAllFile(root: string, reg?: RegExp) {
   let resultArr: string[] = [];
   try {
     if (fs.existsSync(root)) {
@@ -29,17 +29,12 @@ export function readAllFile(root: string, reg: RegExp, filter?: RegExp | Functio
         // dir
         const files = fs.readdirSync(root);
         files.forEach(function (file) {
-          const t = readAllFile(path.join(root, '/', file), reg, filter);
+          const t = readAllFile(path.join(root, '/', file), reg);
           resultArr = resultArr.concat(t);
         });
       } else {
         if (reg !== undefined) {
-          if (
-            isFunction(reg.test) &&
-            reg.test(root) &&
-            (typeof filter === 'function' ? filter(root) : true) &&
-            (isRegExp(filter) ? !filter.test(root) : true)
-          ) {
+          if (isFunction(reg.test) && reg.test(root)) {
             resultArr.push(root);
           }
         } else {
