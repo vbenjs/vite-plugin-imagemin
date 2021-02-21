@@ -114,7 +114,7 @@ function handleOutputLogger(
     ratio = Math.floor(100 * ratio);
     const fr = `${ratio}`;
 
-    const denseRatio = ratio > 0 ? chalk.red(`+${fr}%`) : ratio < 0 ? chalk.green(`${fr}%`) : '';
+    const denseRatio = ratio > 0 ? chalk.red(`+${fr}%`) : ratio <= 0 ? chalk.green(`${fr}%`) : '';
 
     const sizeStr = `${oldSize.toFixed(2)}kb / tiny: ${size.toFixed(2)}kb`;
 
@@ -151,7 +151,7 @@ function filterFiles(files: string[], filter: RegExp | ((file: string) => boolea
 function getImageminPlugins(options: VitePluginImageMin = {}): imagemin.Plugin[] {
   const {
     gifsicle = true,
-    webp = true,
+    webp = false,
     mozjpeg = true,
     pngquant = true,
     optipng = true,
@@ -163,11 +163,6 @@ function getImageminPlugins(options: VitePluginImageMin = {}): imagemin.Plugin[]
     debug('gifsicle:', true);
     const opt = isBoolean(gifsicle) ? undefined : gifsicle;
     plugins.push(imageminGif(opt));
-  }
-  if (isNotFalse(webp)) {
-    debug('webp:', true);
-    const opt = isBoolean(webp) ? undefined : webp;
-    plugins.push(imageminWebp(opt));
   }
 
   if (isNotFalse(mozjpeg)) {
@@ -193,6 +188,10 @@ function getImageminPlugins(options: VitePluginImageMin = {}): imagemin.Plugin[]
     const opt = isBoolean(svgo) ? undefined : svgo;
     plugins.push(imageminSvgo(opt));
   }
-
+  if (isNotFalse(webp)) {
+    debug('webp:', true);
+    const opt = isBoolean(webp) ? undefined : webp;
+    plugins.push(imageminWebp(opt));
+  }
   return plugins;
 }

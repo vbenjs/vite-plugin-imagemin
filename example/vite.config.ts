@@ -19,9 +19,6 @@ export default (): UserConfigExport => {
         optipng: {
           optimizationLevel: 7,
         },
-        webp: {
-          quality: 75,
-        },
         mozjpeg: {
           quality: 65,
         },
