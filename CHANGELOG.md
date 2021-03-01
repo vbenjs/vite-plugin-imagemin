@@ -1,3 +1,7 @@
+## [0.2.9](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.2.8...v0.2.9) (2021-03-02)
+
+
+
 ## 0.2.7 (2021-02-22)
 
 ### Bug Fixes
