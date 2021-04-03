@@ -50,7 +50,9 @@ export default (options: VitePluginImageMin = {}): Plugin => {
       let files = readAllFile(outputPath) || [];
       debug('files:', files);
 
-      if (!files.length) return;
+      if (!files.length) {
+        return;
+      }
 
       files = filterFiles(files, filter);
 
@@ -58,7 +60,9 @@ export default (options: VitePluginImageMin = {}): Plugin => {
 
       const handles = files.map(async (filePath: string) => {
         let { mtimeMs, size: oldSize } = await fs.stat(filePath);
-        if (mtimeMs <= (mtimeCache.get(filePath) || 0)) return;
+        if (mtimeMs <= (mtimeCache.get(filePath) || 0)) {
+          return;
+        }
 
         let content = await fs.readFile(filePath);
         try {
@@ -159,6 +163,7 @@ function getImageminPlugins(options: VitePluginImageMin = {}): imagemin.Plugin[]
   } = options;
 
   const plugins: imagemin.Plugin[] = [];
+
   if (isNotFalse(gifsicle)) {
     debug('gifsicle:', true);
     const opt = isBoolean(gifsicle) ? undefined : gifsicle;
@@ -188,6 +193,7 @@ function getImageminPlugins(options: VitePluginImageMin = {}): imagemin.Plugin[]
     const opt = isBoolean(svgo) ? undefined : svgo;
     plugins.push(imageminSvgo(opt));
   }
+
   if (isNotFalse(webp)) {
     debug('webp:', true);
     const opt = isBoolean(webp) ? undefined : webp;
