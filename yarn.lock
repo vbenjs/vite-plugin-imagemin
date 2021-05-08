@@ -102,13 +102,6 @@
   dependencies:
     "@types/imagemin" "*"
 
-"@types/imagemin-pngquant@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.npmjs.org/@types/imagemin-pngquant/-/imagemin-pngquant-8.0.0.tgz#d163ca43ac1270c5c6f3e9cfbd5d90bd192790d4"
-  integrity sha512-uFncUV7JWfBZj/oCrvD4M0RexrBq0h7Bfm5QBZkGhIxFxw0+ghant31hzKPk/DLd/WLhdgp76ay67fM/oZWNMQ==
-  dependencies:
-    imagemin-pngquant "*"
-
 "@types/imagemin-svgo@^8.0.1":
   version "8.0.1"
   resolved "https://registry.npmjs.org/@types/imagemin-svgo/-/imagemin-svgo-8.0.1.tgz#03af689b75dbdeb634c2457ba22043530a00d87e"
@@ -1702,17 +1695,6 @@ imagemin-optipng@^8.0.0:
     exec-buffer "^3.0.0"
     is-png "^2.0.0"
     optipng-bin "^7.0.0"
-
-imagemin-pngquant@*:
-  version "9.0.1"
-  resolved "https://registry.npmjs.org/imagemin-pngquant/-/imagemin-pngquant-9.0.1.tgz#ecf22f522bdb734a503ecc21bdd7bc3d0230edcc"
-  integrity sha512-PYyo9G/xwddf+Qqlqe3onz5ZH7p6vHYVVkiuuczUjxZmfekyY77RXaOA/AR6FnVoeQxGa/pDtEK5xUKOcVo+sA==
-  dependencies:
-    execa "^4.0.0"
-    is-png "^2.0.0"
-    is-stream "^2.0.0"
-    ow "^0.17.0"
-    pngquant-bin "^6.0.0"
 
 imagemin-pngquant@^9.0.2:
   version "9.0.2"

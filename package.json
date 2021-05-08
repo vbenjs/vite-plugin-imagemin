@@ -37,7 +37,6 @@
     "@types/imagemin-gifsicle": "^7.0.0",
     "@types/imagemin-mozjpeg": "^8.0.0",
     "@types/imagemin-optipng": "^5.2.0",
-    "@types/imagemin-pngquant": "^8.0.0",
     "@types/imagemin-svgo": "^8.0.1",
     "@types/imagemin-webp": "^5.1.1",
     "chalk": "^4.1.0",
