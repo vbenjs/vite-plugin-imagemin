@@ -7,6 +7,10 @@ export const isBoolean = (arg: unknown): arg is boolean => {
   return typeof arg === 'boolean';
 };
 
+export const isObject = (arg: unknown): arg is boolean => {
+  return typeof arg === 'object';
+};
+
 export const isNotFalse = (arg: unknown): arg is boolean => {
   return !(isBoolean(arg) && !arg);
 };

@@ -2,7 +2,7 @@ import type { Plugin, ResolvedConfig } from 'vite';
 import type { VitePluginImageMin } from './types';
 import path from 'path';
 import { normalizePath } from 'vite';
-import { isNotFalse, readAllFile, isBoolean, isRegExp, isFunction } from './utils';
+import { isNotFalse, readAllFile, isBoolean, isRegExp, isFunction, isObject } from './utils';
 import fs from 'fs-extra';
 import chalk from 'chalk';
 import { debug as Debug } from 'debug';
@@ -14,6 +14,8 @@ import imageminOptPng from 'imagemin-optipng';
 import imageminJpeg from 'imagemin-mozjpeg';
 import imageminSvgo from 'imagemin-svgo';
 import imageminWebp from 'imagemin-webp';
+import imageminJpegTran from 'imagemin-jpegtran';
+import { extendDefaultPlugins } from 'svgo';
 
 const debug = Debug('vite-plugin-imagemin');
 
@@ -156,10 +158,11 @@ function getImageminPlugins(options: VitePluginImageMin = {}): imagemin.Plugin[]
   const {
     gifsicle = true,
     webp = false,
-    mozjpeg = true,
-    pngquant = true,
+    mozjpeg = false,
+    pngquant = false,
     optipng = true,
     svgo = true,
+    jpegTran = true,
   } = options;
 
   const plugins: imagemin.Plugin[] = [];
@@ -191,6 +194,10 @@ function getImageminPlugins(options: VitePluginImageMin = {}): imagemin.Plugin[]
   if (isNotFalse(svgo)) {
     debug('svgo:', true);
     const opt = isBoolean(svgo) ? undefined : svgo;
+
+    if (opt !== null && isObject(opt) && Reflect.has(opt, 'plugins')) {
+      (opt as any).plugins = extendDefaultPlugins((opt as any).plugins);
+    }
     plugins.push(imageminSvgo(opt));
   }
 
@@ -198,6 +205,12 @@ function getImageminPlugins(options: VitePluginImageMin = {}): imagemin.Plugin[]
     debug('webp:', true);
     const opt = isBoolean(webp) ? undefined : webp;
     plugins.push(imageminWebp(opt));
+  }
+
+  if (isNotFalse(jpegTran)) {
+    debug('webp:', true);
+    const opt = isBoolean(jpegTran) ? undefined : jpegTran;
+    plugins.push(imageminJpegTran(opt));
   }
   return plugins;
 }

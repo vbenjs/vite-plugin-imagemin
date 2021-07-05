@@ -4,8 +4,14 @@ import type { Options as MozjpegOptions } from 'imagemin-mozjpeg';
 import type { Options as OptipngOptions } from 'imagemin-optipng';
 import type { Options as PngquantOptions } from 'imagemin-pngquant';
 import type { Options as WebpOptions } from 'imagemin-webp';
+import type { Options as JpegOptions } from 'imagemin-jpegtran';
 
 type EnabledOptions<T> = T | false;
+
+// @ts-ignore
+export interface SvgOption extends SvgoOptions {
+  plugins: { name: string; active?: boolean }[];
+}
 
 export interface VitePluginImageMin {
   /**
@@ -31,10 +37,10 @@ export interface VitePluginImageMin {
    * svg compression configuration
    * @default: {enabled:true}
    */
-  svgo?: EnabledOptions<SvgoOptions>;
+  svgo?: EnabledOptions<SvgOption>;
   /**
    * jpeg compression configuration
-   * @default: {enabled:true}
+   * @default: {enabled:false}
    */
   mozjpeg?: EnabledOptions<MozjpegOptions>;
   /**
@@ -44,12 +50,18 @@ export interface VitePluginImageMin {
   optipng?: EnabledOptions<OptipngOptions>;
   /**
    * png compression configuration
-   * @default: {enabled:true}
+   * @default: {enabled:false}
    */
   pngquant?: EnabledOptions<PngquantOptions>;
   /**
    * webp compression configuration
-   * @default: {enabled:true}
+   * @default: {enabled:false}
    */
   webp?: EnabledOptions<WebpOptions>;
+
+  /**
+   * jpeg compression configuration
+   * @default: {enabled:true}
+   */
+  jpegTran?: EnabledOptions<JpegOptions>;
 }
