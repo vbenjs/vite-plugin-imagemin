@@ -23,7 +23,7 @@ const extRE = /\.(png|jpeg|gif|jpg|bmp|svg)$/i;
 
 const mtimeCache = new Map<string, number>();
 
-export default (options: VitePluginImageMin = {}): Plugin => {
+const exportFn = (options: VitePluginImageMin = {}): Plugin => {
   let outputPath: string;
   let config: ResolvedConfig;
 
@@ -214,3 +214,7 @@ function getImageminPlugins(options: VitePluginImageMin = {}): imagemin.Plugin[]
   }
   return plugins;
 }
+
+export default exportFn;
+
+module.exports = exportFn;
