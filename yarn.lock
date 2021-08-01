@@ -61,22 +61,17 @@
   dependencies:
     chalk "*"
 
-<<<<<<< Updated upstream
-"@types/debug@^4.1.5":
-  version "4.1.6"
-  resolved "https://registry.npmjs.org/@types/debug/-/debug-4.1.6.tgz#0b7018723084918a865eff99249c490505df2163"
-  integrity sha512-7fDOJFA/x8B+sO1901BmHlf5dE1cxBU8mRXj8QOEDnn16hhGJv/IHxJtZhvsabZsIMn0eLIyeOKAeqSNJJYTpA==
-=======
-"@types/debug@^4.1.6":
-  version "4.1.6"
-  resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.6.tgz#0b7018723084918a865eff99249c490505df2163"
-  integrity sha512-7fDOJFA/x8B+sO1901BmHlf5dE1cxBU8mRXj8QOEDnn16hhGJv/IHxJtZhvsabZsIMn0eLIyeOKAeqSNJJYTpA==
+"@types/debug@^4.1.7":
+  version "4.1.7"
+  resolved "https://registry.npmjs.org/@types/debug/-/debug-4.1.7.tgz#7cc0ea761509124709b8b2d1090d8f6c17aadb82"
+  integrity sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==
+  dependencies:
+    "@types/ms" "*"
 
 "@types/es-module-lexer@^0.3.0":
   version "0.3.0"
   resolved "https://registry.npmjs.org/@types/es-module-lexer/-/es-module-lexer-0.3.0.tgz#9fee3f19f64e6b3f999eeb3a70bd177a4d57a6cb"
   integrity sha512-XI3MGSejUQIJ3wzY0i5IHy5J3eb36M/ytgG8jIOssP08ovtRPcjpjXQqrx51AHBNBOisTS/NQNWJitI17+EwzQ==
->>>>>>> Stashed changes
 
 "@types/fs-extra@^9.0.12":
   version "9.0.12"
@@ -100,24 +95,17 @@
   dependencies:
     "@types/imagemin" "*"
 
-<<<<<<< Updated upstream
-"@types/imagemin-jpegtran@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@types/imagemin-jpegtran/-/imagemin-jpegtran-5.0.0.tgz#44d98874bdcc3f290ce1e158355f33fc90ac2758"
-  integrity sha512-uwJknBgND9Jx+/d5bJf+mvAjfes0NIDyCeOKFJ9LbEYnp8/PVt0YDGh8K96JemeF84VbhHFxnN62Wz68rVNfFQ==
+"@types/imagemin-jpegtran@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.npmjs.org/@types/imagemin-jpegtran/-/imagemin-jpegtran-5.0.1.tgz#798b2a66cd49b7ec6550fb733c05a5b8755f211f"
+  integrity sha512-Ps8kbm+DUFte/Eln/tUdEvpMWHKFCsQKlV8n+RN50zqWqL/7QhfLxR0ymitP9wa90P6+rkbJlintBNPkVR+B/Q==
   dependencies:
     "@types/imagemin" "*"
 
-"@types/imagemin-mozjpeg@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.npmjs.org/@types/imagemin-mozjpeg/-/imagemin-mozjpeg-8.0.0.tgz#6986c34734aa767d83672eeb519379a2d7ec8b16"
-  integrity sha512-sR2nEZOrlbgnmVgG+lXetZOvhgtctLe1hBfvySnPnxDd2pOon9mMPq7SHFI89VZT1AXvFgRs8w6X8ik8potpgA==
-=======
 "@types/imagemin-mozjpeg@^8.0.1":
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/@types/imagemin-mozjpeg/-/imagemin-mozjpeg-8.0.1.tgz#eaf2f07aea3a317a1710ef2c763ec53f3bcfcdc5"
   integrity sha512-kMQWEoKxxhlnH4POI3qfW9DjXlQfi80ux3l2b3j5R3eudSCoUIzKQLkfMjNJ6eMYnMWBcB+rfQOWqIzdIwFGKw==
->>>>>>> Stashed changes
   dependencies:
     "@types/imagemin" "*"
 
@@ -167,22 +155,20 @@
   resolved "https://registry.npmjs.org/@types/minimist/-/minimist-1.2.1.tgz#283f669ff76d7b8260df8ab7a4262cc83d988256"
   integrity sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==
 
+"@types/ms@*":
+  version "0.7.31"
+  resolved "https://registry.npmjs.org/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
+  integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
+
 "@types/node@*":
   version "14.14.24"
   resolved "https://registry.npmjs.org/@types/node/-/node-14.14.24.tgz#541c00e4f7c41c8f108bd5b045248b5224c62946"
   integrity sha512-6BAlkS4seVjszhrwN0W1WabqWwuJwcYF36Z1rPPyQm80LGRKsIeUPdzI51TezXenjetFNy1gRTpuDn1NBg33LA==
 
-<<<<<<< Updated upstream
-"@types/node@^16.0.0":
-  version "16.0.0"
-  resolved "https://registry.npmjs.org/@types/node/-/node-16.0.0.tgz#067a6c49dc7a5c2412a505628e26902ae967bf6f"
-  integrity sha512-TmCW5HoZ2o2/z2EYi109jLqIaPIi9y/lc2LmDCWzuCi35bcaQ+OtUh6nwBiFK7SOu25FAU5+YKdqFZUwtqGSdg==
-=======
-"@types/node@^15.14.2":
-  version "15.14.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.14.2.tgz#7af8ab20156586f076f4760bc1b3c5ddfffd1ff2"
-  integrity sha512-dvMUE/m2LbXPwlvVuzCyslTEtQ2ZwuuFClDrOQ6mp2CenCg971719PTILZ4I6bTP27xfFFc+o7x2TkLuun/MPw==
->>>>>>> Stashed changes
+"@types/node@^16.4.9":
+  version "16.4.9"
+  resolved "https://registry.npmjs.org/@types/node/-/node-16.4.9.tgz#04eb3da65d08ea377f5e682bf0d22dc1f5e7f19e"
+  integrity sha512-HXhRf581nCItzn8yevv4LYt+bJ5cBbDBAJExbDPMeU/2n5/j0ZemGpayahFBP4xL7RseaCLASLD9i9AYyDe7Nw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -502,10 +488,10 @@ chalk@^2.0.0:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chalk@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.1.tgz#c80b3fab28bf6371e6863325eee67e618b77e6ad"
-  integrity sha512-diHzdDKxcU+bAsUboHLPEDQiw0qEe0qd7SYUn3HgcFlWgbDcfLGswOHYeGrHKzG9z6UYf01d9VFMfZxPM1xZSg==
+chalk@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
+  integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
@@ -558,11 +544,7 @@ color-name@~1.1.4:
 
 colorette@^1.2.2:
   version "1.2.2"
-<<<<<<< Updated upstream
-  resolved "https://registry.npmjs.org/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
-=======
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
->>>>>>> Stashed changes
   integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
 
 commander@^2.8.1:
@@ -1073,43 +1055,6 @@ error-ex@^1.2.0, error-ex@^1.3.1:
   dependencies:
     is-arrayish "^0.2.1"
 
-<<<<<<< Updated upstream
-esbuild@^0.12.8, esbuild@^0.12.9:
-  version "0.12.14"
-  resolved "https://registry.npmjs.org/esbuild/-/esbuild-0.12.14.tgz#43157dbd0b36d939247d4eb4909a4886ac40f82e"
-  integrity sha512-z8p+6FGiplR7a3pPonXREbm+8IeXjBGvDpVidZmGB/AJMsJSfGCU+n7KOMCazA9AwvagadRWBhiKorC0w9WJvw==
-=======
-es-abstract@^1.17.2, es-abstract@^1.18.0-next.2:
-  version "1.18.0"
-  resolved "https://registry.npmjs.org/es-abstract/-/es-abstract-1.18.0.tgz#ab80b359eecb7ede4c298000390bc5ac3ec7b5a4"
-  integrity sha512-LJzK7MrQa8TS0ja2w3YNLzUgJCGPdPOV1yVvezjNnS89D+VR08+Szt2mz3YB2Dck/+w5tfIq/RoUAFqJJGM2yw==
-  dependencies:
-    call-bind "^1.0.2"
-    es-to-primitive "^1.2.1"
-    function-bind "^1.1.1"
-    get-intrinsic "^1.1.1"
-    has "^1.0.3"
-    has-symbols "^1.0.2"
-    is-callable "^1.2.3"
-    is-negative-zero "^2.0.1"
-    is-regex "^1.1.2"
-    is-string "^1.0.5"
-    object-inspect "^1.9.0"
-    object-keys "^1.1.1"
-    object.assign "^4.1.2"
-    string.prototype.trimend "^1.0.4"
-    string.prototype.trimstart "^1.0.4"
-    unbox-primitive "^1.0.0"
-
-es-to-primitive@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/es-to-primitive/-/es-to-primitive-1.2.1.tgz#e55cd4c9cdc188bcefb03b366c736323fc5c898a"
-  integrity sha512-QCOllgZJtaUo9miYBcLChTUaHNjJF3PYs1VidD7AwiEj1kYxKeQTctLAezAOH5ZKRH0g2IgPn6KwB4IT8iRpvA==
-  dependencies:
-    is-callable "^1.1.4"
-    is-date-object "^1.0.1"
-    is-symbol "^1.0.2"
-
 esbuild@^0.11.23:
   version "0.11.23"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.11.23.tgz#c42534f632e165120671d64db67883634333b4b8"
@@ -1119,7 +1064,6 @@ esbuild@^0.12.8, esbuild@^0.12.9:
   version "0.12.15"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.12.15.tgz#9d99cf39aeb2188265c5983e983e236829f08af0"
   integrity sha512-72V4JNd2+48eOVCXx49xoSWHgC3/cCy96e7mbXKY+WOWghN00cCmlGnwVLRhRHorvv0dgCyuMYBZlM2xDM5OQw==
->>>>>>> Stashed changes
 
 escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
@@ -1380,11 +1324,7 @@ fsevents@~2.3.1:
 
 fsevents@~2.3.2:
   version "2.3.2"
-<<<<<<< Updated upstream
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
-=======
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
->>>>>>> Stashed changes
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
 function-bind@^1.1.1:
@@ -1825,6 +1765,11 @@ ini@^1.3.2, ini@^1.3.4:
   resolved "https://registry.npmjs.org/ini/-/ini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
   integrity sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==
 
+ini@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/ini/-/ini-2.0.0.tgz#e5fd556ecdd5726be978fa1001862eacb0a94bc5"
+  integrity sha512-7PnF4oN3CvZF23ADhA5wRaYEQpJ8qygSkbtTXWBeXWXmEVRXK+1ITciHWwHhsjv1TmW0MgacIv6hEi5pX5NQdA==
+
 interpret@^1.0.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/interpret/-/interpret-1.4.0.tgz#665ab8bc4da27a774a40584e812e3e0fa45b1a1e"
@@ -1858,15 +1803,9 @@ is-core-module@^2.1.0:
     has "^1.0.3"
 
 is-core-module@^2.2.0:
-<<<<<<< Updated upstream
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/is-core-module/-/is-core-module-2.4.0.tgz#8e9fc8e15027b011418026e98f0e6f4d86305cc1"
-  integrity sha512-6A2fkfq1rfeQZjxrZJGerpLCTHRNEBiSgnu0+obeJpEPZRUooHgsizvzv0ZjJwOz3iWIHdJtVWJ/tmPr3D21/A==
-=======
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.5.0.tgz#f754843617c70bfd29b7bd87327400cda5c18491"
   integrity sha512-TXCMSDsEHMEEZ6eCA8rwRDbLu55MRGmrctljsBX/2v1d9/GzqHOxW5c5oPSgrUt2vBFXebu9rGqckXGPWOlYpg==
->>>>>>> Stashed changes
   dependencies:
     has "^1.0.3"
 
@@ -2324,11 +2263,7 @@ mz@^2.7.0:
 
 nanoid@^3.1.23:
   version "3.1.23"
-<<<<<<< Updated upstream
-  resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.1.23.tgz#f744086ce7c2bc47ee0a8472574d5c78e4183a81"
-=======
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.23.tgz#f744086ce7c2bc47ee0a8472574d5c78e4183a81"
->>>>>>> Stashed changes
   integrity sha512-FiB0kzdP0FFVGDKlRLEQ1BgDzU87dy5NnzjeW9YZNt+/c3+q82EQDUwniSAUxp/F0gFNI1ZhKU1FqYsMuqZVnw==
 
 neo-async@^2.6.0:
@@ -2716,14 +2651,10 @@ postcss-load-config@^3.0.1:
     cosmiconfig "^7.0.0"
     import-cwd "^3.0.0"
 
-postcss@^8.3.5:
-  version "8.3.5"
-<<<<<<< Updated upstream
-  resolved "https://registry.npmjs.org/postcss/-/postcss-8.3.5.tgz#982216b113412bc20a86289e91eb994952a5b709"
-=======
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.3.5.tgz#982216b113412bc20a86289e91eb994952a5b709"
->>>>>>> Stashed changes
-  integrity sha512-NxTuJocUhYGsMiMFHDUkmjSKT3EdH4/WbGF6GCi1NDGk+vbcUTun4fpbOqaPtD8IIsztA2ilZm2DhYCuyN58gA==
+postcss@^8.3.6:
+  version "8.3.6"
+  resolved "https://registry.npmjs.org/postcss/-/postcss-8.3.6.tgz#2730dd76a97969f37f53b9a6096197be311cc4ea"
+  integrity sha512-wG1cc/JhRgdqB6WHEuyLTedf3KIRuD0hG6ldkFEZNCjRxiC+3i6kkWUUbiJQayP28iwG35cEmAbe98585BYV0A==
   dependencies:
     colorette "^1.2.2"
     nanoid "^3.1.23"
@@ -2739,15 +2670,9 @@ prepend-http@^2.0.0:
   resolved "https://registry.npmjs.org/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-<<<<<<< Updated upstream
-prettier@^2.2.1:
-  version "2.3.2"
-  resolved "https://registry.npmjs.org/prettier/-/prettier-2.3.2.tgz#ef280a05ec253712e486233db5c6f23441e7342d"
-=======
 prettier@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.2.tgz#ef280a05ec253712e486233db5c6f23441e7342d"
->>>>>>> Stashed changes
   integrity sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==
 
 process-nextick-args@~2.0.0:
@@ -2929,11 +2854,7 @@ resolve@^1.1.6, resolve@^1.10.0, resolve@^1.17.0:
 
 resolve@^1.20.0:
   version "1.20.0"
-<<<<<<< Updated upstream
-  resolved "https://registry.npmjs.org/resolve/-/resolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
-=======
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
->>>>>>> Stashed changes
   integrity sha512-wENBPt4ySzg4ybFQW2TT1zMQucPK95HSh/nq2CFTZVOGut2+pQvSsgtda4d26YrYcr067wjbmzOG8byDPBX63A==
   dependencies:
     is-core-module "^2.2.0"
@@ -3096,11 +3017,7 @@ sort-keys@^2.0.0:
 
 source-map-js@^0.6.2:
   version "0.6.2"
-<<<<<<< Updated upstream
-  resolved "https://registry.npmjs.org/source-map-js/-/source-map-js-0.6.2.tgz#0bb5de631b41cfbda6cfba8bd05a80efdfd2385e"
-=======
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-0.6.2.tgz#0bb5de631b41cfbda6cfba8bd05a80efdfd2385e"
->>>>>>> Stashed changes
   integrity sha512-/3GptzWzu0+0MBQFrDKzw/DvvMTUORvgY6k6jd/VS6iCR4RDTKWH6v6WPwQoUO8667uQEf9Oe38DxAYWY5F/Ug==
 
 source-map@^0.6.1:
@@ -3416,17 +3333,10 @@ ts-interface-checker@^0.1.9:
   resolved "https://registry.npmjs.org/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz#784fd3d679722bc103b1b4b8030bcddb5db2a699"
   integrity sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==
 
-<<<<<<< Updated upstream
-tsup@^4.10.1:
-  version "4.12.0"
-  resolved "https://registry.npmjs.org/tsup/-/tsup-4.12.0.tgz#ad1d2814c2ce04cc8f74d5e9785347660b4bbbc5"
-  integrity sha512-TjODlDrJYcMHW8nRVbhf2PBelo2ew3s7zfSdp/17dXlPkMbnYs80ZmITPgR1KRa6cagSqU+9lYZZe/xbRqhWAQ==
-=======
 tsup@^4.12.5:
   version "4.12.5"
   resolved "https://registry.yarnpkg.com/tsup/-/tsup-4.12.5.tgz#fefbee2b32b244dd3f6c01986f8ab68e7ab83fc3"
   integrity sha512-3f0StcX+trOZvgaY/iU11U8HvvQ4v/LLgoP9OmxtOQVXP8e/Q8FSk69d0bXFb2pHB77CmVxvqiWdwybELQfx1A==
->>>>>>> Stashed changes
   dependencies:
     cac "^6.7.2"
     chalk "^4.1.0"
@@ -3469,15 +3379,9 @@ type-fest@^0.8.1:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
 
-<<<<<<< Updated upstream
-typescript@^4.2.4:
-  version "4.3.5"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
-=======
 typescript@^4.3.5:
   version "4.3.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
->>>>>>> Stashed changes
   integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
 
 uglify-js@^3.1.4:
@@ -3535,38 +3439,17 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-<<<<<<< Updated upstream
-vite@^2.2.4:
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/vite/-/vite-2.4.0.tgz#a591e4f2c996ae9a044093f629b418069629ca16"
-  integrity sha512-FR+1hCyGt8i+ijMe9z4tIfUQ7BQThxGevp3IlmdXDBSJEPjbeDznbuJa/QVzXw2Mpxh7KCmveVI082h8nzcCNw==
-=======
-vite@^2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.4.2.tgz#07d00615775c808530bc9f65641062b349b67929"
-  integrity sha512-2MifxD2I9fjyDmmEzbULOo3kOUoqX90A58cT6mECxoVQlMYFuijZsPQBuA14mqSwvV3ydUsqnq+BRWXyO9Qa+w==
->>>>>>> Stashed changes
+vite@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.npmjs.org/vite/-/vite-2.4.4.tgz#8c402a07ad45f168f6eb5428bead38f3e4363e47"
+  integrity sha512-m1wK6pFJKmaYA6AeZIUXyiAgUAAJzVXhIMYCdZUpCaFMGps0v0IlNJtbmPvkUhVEyautalajmnW5X6NboUPsnw==
   dependencies:
     esbuild "^0.12.8"
-    postcss "^8.3.5"
+    postcss "^8.3.6"
     resolve "^1.20.0"
     rollup "^2.38.5"
   optionalDependencies:
     fsevents "~2.3.2"
-<<<<<<< Updated upstream
-=======
-
-which-boxed-primitive@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/which-boxed-primitive/-/which-boxed-primitive-1.0.2.tgz#13757bc89b209b049fe5d86430e21cf40a89a8e6"
-  integrity sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==
-  dependencies:
-    is-bigint "^1.0.1"
-    is-boolean-object "^1.1.0"
-    is-number-object "^1.0.4"
-    is-string "^1.0.5"
-    is-symbol "^1.0.3"
->>>>>>> Stashed changes
 
 which@^1.2.9:
   version "1.3.1"

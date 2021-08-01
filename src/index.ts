@@ -48,7 +48,7 @@ const exportFn = (options: VitePluginImageMin = {}): Plugin => {
       outputPath = path.join(config.root, config.build.outDir);
       debug('resolvedConfig:', resolvedConfig);
     },
-    async writeBundle() {
+    async closeBundle() {
       let files = readAllFile(outputPath) || [];
       debug('files:', files);
 
