@@ -2,7 +2,7 @@ import type { Plugin, ResolvedConfig } from 'vite';
 import type { VitePluginImageMin } from './types';
 import path from 'path';
 import { normalizePath } from 'vite';
-import { isNotFalse, readAllFile, isBoolean, isRegExp, isFunction, isObject } from './utils';
+import { isNotFalse, readAllFile, isBoolean, isRegExp, isFunction } from './utils';
 import fs from 'fs-extra';
 import chalk from 'chalk';
 import { debug as Debug } from 'debug';
@@ -15,7 +15,6 @@ import imageminJpeg from 'imagemin-mozjpeg';
 import imageminSvgo from 'imagemin-svgo';
 import imageminWebp from 'imagemin-webp';
 import imageminJpegTran from 'imagemin-jpegtran';
-import { extendDefaultPlugins } from 'svgo';
 
 const debug = Debug('vite-plugin-imagemin');
 
@@ -195,9 +194,11 @@ function getImageminPlugins(options: VitePluginImageMin = {}): imagemin.Plugin[]
     debug('svgo:', true);
     const opt = isBoolean(svgo) ? undefined : svgo;
 
-    if (opt !== null && isObject(opt) && Reflect.has(opt, 'plugins')) {
-      (opt as any).plugins = extendDefaultPlugins((opt as any).plugins);
-    }
+    // if (opt !== null && isObject(opt) && Reflect.has(opt, 'plugins')) {
+    //   (opt as any).plugins.push({
+    //     name: 'preset-default',
+    //   });
+    // }
     plugins.push(imageminSvgo(opt));
   }
 
