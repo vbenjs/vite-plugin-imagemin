@@ -1,3 +1,12 @@
+## [0.4.4](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.3.0...v0.4.4) (2021-08-23)
+
+
+### Features
+
+* support svgo2 ([aa81b70](https://github.com/anncwb/vite-plugin-imagemin/commit/aa81b706498567a7b43c19927802abafb2cc754d))
+
+
+
 # [0.4.0](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.3.0...v0.4.0) (2021-07-05)
 
 ### Features
