@@ -126,8 +126,8 @@ function handleOutputLogger(
     const sizeStr = `${oldSize.toFixed(2)}kb / tiny: ${size.toFixed(2)}kb`;
 
     config.logger.info(
-      // chalk.dim(config.build.outDir + '/') +
-      chalk.blueBright(rName) +
+      chalk.dim(path.basename(config.build.outDir) + '/') +
+        chalk.blueBright(rName) +
         ' '.repeat(2 + maxKeyLength - name.length) +
         chalk.gray(`${denseRatio} ${' '.repeat(valueKeyLength - fr.length)}`) +
         ' ' +
