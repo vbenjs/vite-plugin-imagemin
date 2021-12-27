@@ -8,9 +8,8 @@ import type { Options as JpegOptions } from 'imagemin-jpegtran';
 
 type EnabledOptions<T> = T | false;
 
-// @ts-ignore
 export interface SvgOption extends SvgoOptions {
-  plugins: { name: string; active?: boolean }[];
+  plugins: any[];
 }
 
 export interface VitePluginImageMin {

@@ -2,8 +2,7 @@ import type { Plugin, ResolvedConfig } from 'vite';
 import type { VitePluginImageMin } from './types';
 import path from 'path';
 import { normalizePath } from 'vite';
-import { isNotFalse, readAllFile, isBoolean, isRegExp, isFunction } from './utils';
-import fs from 'fs-extra';
+import { isNotFalse, isBoolean, isRegExp, isFunction } from './utils';
 import chalk from 'chalk';
 import { debug as Debug } from 'debug';
 
@@ -20,8 +19,6 @@ const debug = Debug('vite-plugin-imagemin');
 
 const extRE = /\.(png|jpeg|gif|jpg|bmp|svg)$/i;
 
-const mtimeCache = new Map<string, number>();
-
 const exportFn = (options: VitePluginImageMin = {}): Plugin => {
   let outputPath: string;
   let config: ResolvedConfig;
@@ -37,6 +34,7 @@ const exportFn = (options: VitePluginImageMin = {}): Plugin => {
   }
 
   debug('plugin options:', options);
+  let tinyMap = new Map<string, { size: number; oldSize: number; ratio: number }>();
 
   return {
     ...emptyPlugin,
@@ -47,47 +45,51 @@ const exportFn = (options: VitePluginImageMin = {}): Plugin => {
       outputPath = path.join(config.root, config.build.outDir);
       debug('resolvedConfig:', resolvedConfig);
     },
-    async closeBundle() {
-      let files = readAllFile(outputPath) || [];
+    async generateBundle(_options, bundler) {
+      tinyMap = new Map();
+      const files: string[] = [];
+
+      Object.keys(bundler).forEach((key) => {
+        filterFile(path.resolve(outputPath, key), filter) && files.push(key);
+      });
+
       debug('files:', files);
 
       if (!files.length) {
         return;
       }
 
-      files = filterFiles(files, filter);
-
-      const tinyMap = new Map<string, { size: number; oldSize: number; ratio: number }>();
-
       const handles = files.map(async (filePath: string) => {
-        let { mtimeMs, size: oldSize } = await fs.stat(filePath);
-        if (mtimeMs <= (mtimeCache.get(filePath) || 0)) {
-          return;
-        }
+        let source = (bundler[filePath] as any).source;
 
-        let content = await fs.readFile(filePath);
+        const fullFilePath = path.resolve(outputPath, filePath);
+        let content: Buffer | null = null;
         try {
-          content = await imagemin.buffer(content, {
+          content = await imagemin.buffer(source, {
             plugins: getImageminPlugins(options),
           });
         } catch (error) {
-          config.logger.error('imagemin error:' + filePath);
+          console.log(error);
+          config.logger.error('imagemin error:' + fullFilePath);
         }
-        const size = content.byteLength;
-        tinyMap.set(filePath, {
+        const oldSize = source.length;
+        const size = content?.byteLength ?? 0;
+        tinyMap.set(fullFilePath, {
           size: size / 1024,
           oldSize: oldSize / 1024,
           ratio: size / oldSize - 1,
         });
-        await fs.writeFile(filePath, content);
-        mtimeCache.set(filePath, Date.now());
-      });
-
-      Promise.all(handles).then(() => {
-        if (verbose) {
-          handleOutputLogger(config, tinyMap);
+        if (content) {
+          (bundler[filePath] as any).source = content;
         }
       });
+
+      await Promise.all(handles);
+    },
+    closeBundle() {
+      if (verbose) {
+        handleOutputLogger(config, tinyMap);
+      }
     },
   };
 };
@@ -124,8 +126,8 @@ function handleOutputLogger(
     const sizeStr = `${oldSize.toFixed(2)}kb / tiny: ${size.toFixed(2)}kb`;
 
     config.logger.info(
-      chalk.dim(config.build.outDir + '/') +
-        chalk.blueBright(rName) +
+      // chalk.dim(config.build.outDir + '/') +
+      chalk.blueBright(rName) +
         ' '.repeat(2 + maxKeyLength - name.length) +
         chalk.gray(`${denseRatio} ${' '.repeat(valueKeyLength - fr.length)}`) +
         ' ' +
@@ -135,21 +137,18 @@ function handleOutputLogger(
   config.logger.info('\n');
 }
 
-function filterFiles(files: string[], filter: RegExp | ((file: string) => boolean)) {
+function filterFile(file: string, filter: RegExp | ((file: string) => boolean)) {
   if (filter) {
     const isRe = isRegExp(filter);
     const isFn = isFunction(filter);
-    files = files.filter((file) => {
-      if (isRe) {
-        return (filter as RegExp).test(file);
-      }
-      if (isFn) {
-        return (filter as Function)(file);
-      }
-      return true;
-    });
+    if (isRe) {
+      return (filter as RegExp).test(file);
+    }
+    if (isFn) {
+      return (filter as Function)(file);
+    }
   }
-  return files;
+  return false;
 }
 
 // imagemin compression plugin configuration

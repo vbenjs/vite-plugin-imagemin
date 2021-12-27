@@ -1,3 +1,12 @@
+# [0.5.0](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.4.6...v0.5.0) (2021-12-28)
+
+
+### Performance Improvements
+
+* refactor image compression logic ([166a9a5](https://github.com/anncwb/vite-plugin-imagemin/commit/166a9a5dd62105a156aeabab91574ccd69f5f1be))
+
+
+
 ## [0.4.6](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.3.0...v0.4.6) (2021-09-27)
 
 

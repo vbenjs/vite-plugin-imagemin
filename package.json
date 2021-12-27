@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-imagemin",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "description": "A vite plugin for compressing image assets",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -38,12 +38,12 @@
     "@types/imagemin-jpegtran": "^5.0.1",
     "@types/imagemin-mozjpeg": "^8.0.1",
     "@types/imagemin-optipng": "^5.2.1",
-    "@types/imagemin-svgo": "^9.0.1",
-    "@types/imagemin-webp": "^5.1.2",
-    "@types/svgo": "^2.4.2",
-    "chalk": "^4.1.2",
-    "debug": "^4.3.2",
-    "esbuild": "^0.13.2",
+    "@types/imagemin-svgo": "^10.0.0",
+    "@types/imagemin-webp": "^7.0.0",
+    "@types/svgo": "^2.6.0",
+    "chalk": "^5.0.0",
+    "debug": "^4.3.3",
+    "esbuild": "^0.14.8",
     "fs-extra": "^10.0.0",
     "imagemin": "^7.0.1",
     "imagemin-gifsicle": "^7.0.0",
@@ -52,7 +52,8 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^9.0.0",
-    "imagemin-webp": "^6.0.0"
+    "imagemin-webp": "^6.0.0",
+    "jpegtran-bin": "^6.0.1"
   },
   "peerDependencies": {
     "vite": ">=2.0.0"
@@ -66,13 +67,13 @@
     "@types/debug": "^4.1.7",
     "@types/es-module-lexer": "^0.4.1",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^16.10.1",
-    "conventional-changelog-cli": "^2.1.1",
+    "@types/node": "^17.0.5",
+    "conventional-changelog-cli": "^2.2.2",
     "ini": "^2.0.0",
-    "prettier": "^2.4.1",
+    "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
-    "tsup": "^5.2.1",
-    "typescript": "^4.4.3",
-    "vite": "^2.5.10"
+    "tsup": "^5.11.9",
+    "typescript": "^4.5.4",
+    "vite": "^2.7.7"
   }
 }
