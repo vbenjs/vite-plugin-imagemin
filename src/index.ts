@@ -2,7 +2,6 @@ import type { Plugin, ResolvedConfig } from 'vite';
 import type { VitePluginImageMin } from './types';
 import path from 'path';
 import fs from 'fs-extra';
-import { normalizePath } from 'vite';
 import { isNotFalse, isBoolean, isRegExp, isFunction, readAllFiles } from './utils';
 import chalk from 'chalk';
 import { debug as Debug } from 'debug';
@@ -93,11 +92,8 @@ const exportFn = (options: VitePluginImageMin = {}): Plugin => {
       }
 
       const handles = files.map(async (filePath: string) => {
-        let source = (bundler[filePath] as any).source;
-
-        const fullFilePath = path.resolve(outputPath, filePath);       
-      
-        const content = await processFile(fullFilePath, source);
+        let source = (bundler[filePath] as any).source;     
+        const content = await processFile(filePath, source);
         if (content) {
           (bundler[filePath] as any).source = content;
         }
@@ -116,20 +112,21 @@ const exportFn = (options: VitePluginImageMin = {}): Plugin => {
 
         if (files.length) {
           const handles = files.map(async (publicFilePath: string) => {
-            // now convert the path to the output folder
-            const fullFilePath = path.join(outputPath, publicFilePath.replace(publicDir, ''));
+            // now convert the path to the output folder           
+            const filePath = publicFilePath.replace(publicDir + '/', '');
+            const fullFilePath = path.join(outputPath, filePath);
             
             const { mtimeMs } = await fs.stat(fullFilePath);
-            if (mtimeMs <= (mtimeCache.get(fullFilePath) || 0)) {
+            if (mtimeMs <= (mtimeCache.get(filePath) || 0)) {
               return;
             }
 
             const buffer = await fs.readFile(fullFilePath);
-            const content = await processFile(fullFilePath, buffer);
+            const content = await processFile(filePath, buffer);
 
             if (content) {
               await fs.writeFile(fullFilePath, content);
-              mtimeCache.set(fullFilePath, Date.now());
+              mtimeCache.set(filePath, Date.now());
             }
           });
 
@@ -164,10 +161,6 @@ function handleOutputLogger(
   recordMap.forEach((value, name) => {
     let { ratio, size, oldSize } = value;
 
-    const rName = normalizePath(name).replace(
-      normalizePath(`${config.root}/${config.build.outDir}/`),
-      ''
-    );
     ratio = Math.floor(100 * ratio);
     const fr = `${ratio}`;
 
@@ -176,8 +169,8 @@ function handleOutputLogger(
     const sizeStr = `${oldSize.toFixed(2)}kb / tiny: ${size.toFixed(2)}kb`;
 
     config.logger.info(
-      chalk.dim(path.basename(config.build.outDir) + '/') +
-        chalk.blueBright(rName) +
+      chalk.dim(path.basename(config.build.outDir)) + '/' +
+        chalk.blueBright(name) +
         ' '.repeat(2 + maxKeyLength - name.length) +
         chalk.gray(`${denseRatio} ${' '.repeat(valueKeyLength - fr.length)}`) +
         ' ' +
