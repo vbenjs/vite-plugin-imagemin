@@ -1,8 +1,8 @@
 import type { Plugin, ResolvedConfig } from 'vite';
 import type { VitePluginImageMin } from './types';
 import path from 'path';
-import { normalizePath } from 'vite';
-import { isNotFalse, isBoolean, isRegExp, isFunction } from './utils';
+import fs from 'fs-extra';
+import { isNotFalse, isBoolean, isRegExp, isFunction, readAllFiles } from './utils';
 import chalk from 'chalk';
 import { debug as Debug } from 'debug';
 
@@ -21,6 +21,7 @@ const extRE = /\.(png|jpeg|gif|jpg|bmp|svg)$/i;
 
 const exportFn = (options: VitePluginImageMin = {}): Plugin => {
   let outputPath: string;
+  let publicDir: string;
   let config: ResolvedConfig;
 
   const emptyPlugin: Plugin = {
@@ -34,15 +35,46 @@ const exportFn = (options: VitePluginImageMin = {}): Plugin => {
   }
 
   debug('plugin options:', options);
+
+  const mtimeCache = new Map<string, number>();
   let tinyMap = new Map<string, { size: number; oldSize: number; ratio: number }>();
+
+  async function processFile(filePath: string, buffer: Buffer) {
+    let content:Buffer;
+
+    try {
+      content = await imagemin.buffer(buffer, {
+        plugins: getImageminPlugins(options),
+      });
+
+      const size = content.byteLength,
+        oldSize = buffer.byteLength;
+  
+      tinyMap.set(filePath, {
+        size: size / 1024,
+        oldSize: oldSize / 1024,
+        ratio: size / oldSize - 1,
+      });
+      
+      return content;
+    } catch (error) {
+      config.logger.error('imagemin error:' + filePath);
+    }
+  }
 
   return {
     ...emptyPlugin,
     apply: 'build',
     enforce: 'post',
-    configResolved(resolvedConfig) {
+    configResolved(resolvedConfig) {     
       config = resolvedConfig;
-      outputPath = path.join(config.root, config.build.outDir);
+      outputPath = config.build.outDir;
+
+      // get public static assets directory: https://vitejs.dev/guide/assets.html#the-public-directory
+      if (typeof config.publicDir === 'string') {
+        publicDir = config.publicDir;
+      }
+  
       debug('resolvedConfig:', resolvedConfig);
     },
     async generateBundle(_options, bundler) {
@@ -60,25 +92,8 @@ const exportFn = (options: VitePluginImageMin = {}): Plugin => {
       }
 
       const handles = files.map(async (filePath: string) => {
-        let source = (bundler[filePath] as any).source;
-
-        const fullFilePath = path.resolve(outputPath, filePath);
-        let content: Buffer | null = null;
-        try {
-          content = await imagemin.buffer(source, {
-            plugins: getImageminPlugins(options),
-          });
-        } catch (error) {
-          console.log(error);
-          config.logger.error('imagemin error:' + fullFilePath);
-        }
-        const oldSize = source.length;
-        const size = content?.byteLength ?? 0;
-        tinyMap.set(fullFilePath, {
-          size: size / 1024,
-          oldSize: oldSize / 1024,
-          ratio: size / oldSize - 1,
-        });
+        let source = (bundler[filePath] as any).source;     
+        const content = await processFile(filePath, source);
         if (content) {
           (bundler[filePath] as any).source = content;
         }
@@ -86,7 +101,39 @@ const exportFn = (options: VitePluginImageMin = {}): Plugin => {
 
       await Promise.all(handles);
     },
-    closeBundle() {
+    async closeBundle() {
+      if (publicDir) {
+        const files:string[] = [];
+        
+        // try to find any static images in original static folder
+        readAllFiles(publicDir).forEach((file) => {
+          filterFile(file, filter) && files.push(file);
+        });
+
+        if (files.length) {
+          const handles = files.map(async (publicFilePath: string) => {
+            // now convert the path to the output folder           
+            const filePath = publicFilePath.replace(publicDir + '/', '');
+            const fullFilePath = path.join(outputPath, filePath);
+            
+            const { mtimeMs } = await fs.stat(fullFilePath);
+            if (mtimeMs <= (mtimeCache.get(filePath) || 0)) {
+              return;
+            }
+
+            const buffer = await fs.readFile(fullFilePath);
+            const content = await processFile(filePath, buffer);
+
+            if (content) {
+              await fs.writeFile(fullFilePath, content);
+              mtimeCache.set(filePath, Date.now());
+            }
+          });
+
+          await Promise.all(handles);
+        }
+      }
+
       if (verbose) {
         handleOutputLogger(config, tinyMap);
       }
@@ -114,10 +161,6 @@ function handleOutputLogger(
   recordMap.forEach((value, name) => {
     let { ratio, size, oldSize } = value;
 
-    const rName = normalizePath(name).replace(
-      normalizePath(`${config.root}/${config.build.outDir}/`),
-      ''
-    );
     ratio = Math.floor(100 * ratio);
     const fr = `${ratio}`;
 
@@ -126,8 +169,8 @@ function handleOutputLogger(
     const sizeStr = `${oldSize.toFixed(2)}kb / tiny: ${size.toFixed(2)}kb`;
 
     config.logger.info(
-      chalk.dim(path.basename(config.build.outDir) + '/') +
-        chalk.blueBright(rName) +
+      chalk.dim(path.basename(config.build.outDir)) + '/' +
+        chalk.blueBright(name) +
         ' '.repeat(2 + maxKeyLength - name.length) +
         chalk.gray(`${denseRatio} ${' '.repeat(valueKeyLength - fr.length)}`) +
         ' ' +
@@ -136,6 +179,7 @@ function handleOutputLogger(
   });
   config.logger.info('\n');
 }
+
 
 function filterFile(file: string, filter: RegExp | ((file: string) => boolean)) {
   if (filter) {
