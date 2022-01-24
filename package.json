@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-imagemin",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A vite plugin for compressing image assets",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

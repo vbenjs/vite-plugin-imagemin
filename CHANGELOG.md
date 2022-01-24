@@ -1,3 +1,7 @@
+## [0.5.2](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.4.6...v0.5.2) (2022-01-24)
+
+
+
 # [0.5.0](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.4.6...v0.5.0) (2021-12-28)
 
 
