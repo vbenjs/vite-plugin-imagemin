@@ -116,6 +116,10 @@ const exportFn = (options: VitePluginImageMin = {}): Plugin => {
             const filePath = publicFilePath.replace(publicDir + path.sep, '');
             const fullFilePath = path.join(outputPath, filePath);
             
+            if (fs.existsSync(fullFilePath) === false) {
+              return;
+            }
+
             const { mtimeMs } = await fs.stat(fullFilePath);
             if (mtimeMs <= (mtimeCache.get(filePath) || 0)) {
               return;
