@@ -113,7 +113,7 @@ const exportFn = (options: VitePluginImageMin = {}): Plugin => {
         if (files.length) {
           const handles = files.map(async (publicFilePath: string) => {
             // now convert the path to the output folder           
-            const filePath = publicFilePath.replace(publicDir + '/', '');
+            const filePath = publicFilePath.replace(publicDir + path.sep, '');
             const fullFilePath = path.join(outputPath, filePath);
             
             const { mtimeMs } = await fs.stat(fullFilePath);
