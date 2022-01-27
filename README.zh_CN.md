@@ -49,7 +49,7 @@ npm i vite-plugin-imagemin -D
 - vite.config.ts 中的配置插件
 
 ```ts
-import viteImagemin from 'vite-plugin-imagemin';
+import viteImagemin from 'vite-plugin-imagemin'
 
 export default () => {
   return {
@@ -82,36 +82,31 @@ export default () => {
         },
       }),
     ],
-  };
-};
+  }
+}
 ```
 
 ### 配置说明
 
-| 参数 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| verbose | `boolean` | `true` | 是否在控制台输出压缩结果 |
-| filter | `RegExp or (file: string) => boolean` | - | 指定哪些资源不压缩 |
-| disable | `boolean` | `false` | 是否禁用 |
-| svgo | `object` or `false` | - | 见 [Options](https://github.com/svg/svgo/#what-it-can-do) |
-| gifsicle | `object` or `false` | - | 见 [Options](https://github.com/imagemin/imagemin-gifsicle) |
-| mozjpeg | `object` or `false` | - | 见 [Options](https://github.com/imagemin/imagemin-mozjpeg) |
-| optipng | `object` or `false` | - | 见 [Options](https://github.com/imagemin/imagemin-optipng) |
-| pngquant | `object` or `false` | - | 见 [Options](https://github.com/imagemin/imagemin-pngquant) |
-| webp | `object` or `false` | - | 见 [Options](https://github.com/imagemin/imagemin-webp) |
+| 参数     | 类型                                  | 默认值  | 说明                                                        |
+| -------- | ------------------------------------- | ------- | ----------------------------------------------------------- |
+| verbose  | `boolean`                             | `true`  | 是否在控制台输出压缩结果                                    |
+| filter   | `RegExp or (file: string) => boolean` | -       | 指定哪些资源不压缩                                          |
+| disable  | `boolean`                             | `false` | 是否禁用                                                    |
+| svgo     | `object` or `false`                   | -       | 见 [Options](https://github.com/svg/svgo/#what-it-can-do)   |
+| gifsicle | `object` or `false`                   | -       | 见 [Options](https://github.com/imagemin/imagemin-gifsicle) |
+| mozjpeg  | `object` or `false`                   | -       | 见 [Options](https://github.com/imagemin/imagemin-mozjpeg)  |
+| optipng  | `object` or `false`                   | -       | 见 [Options](https://github.com/imagemin/imagemin-optipng)  |
+| pngquant | `object` or `false`                   | -       | 见 [Options](https://github.com/imagemin/imagemin-pngquant) |
+| webp     | `object` or `false`                   | -       | 见 [Options](https://github.com/imagemin/imagemin-webp)     |
 
 ## 示例
 
 **运行示例**
 
 ```bash
-
-cd ./example
-
-yarn install
-
-yarn build
-
+npm run dev:play
+npm run dev:build
 ```
 
 ## 示例项目

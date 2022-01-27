@@ -49,7 +49,7 @@ Because imagemin is not easy to install in China. Several solutions are now avai
 - Configuration plugin in vite.config.ts
 
 ```ts
-import viteImagemin from 'vite-plugin-imagemin';
+import viteImagemin from 'vite-plugin-imagemin'
 
 export default () => {
   return {
@@ -82,23 +82,23 @@ export default () => {
         },
       }),
     ],
-  };
-};
+  }
+}
 ```
 
 ### Options
 
-| params | type | default | default |
-| --- | --- | --- | --- |
-| verbose | `boolean` | `true` | Whether to output the compressed result in the console |
-| filter | `RegExp or (file: string) => boolean` | - | Specify which resources are not compressed |
-| disable | `boolean` | `false` | Whether to disable |
-| svgo | `object` or `false` | - | See [Options](https://github.com/svg/svgo/#what-it-can-do) |
-| gifsicle | `object` or `false` | - | See [Options](https://github.com/imagemin/imagemin-gifsicle) |
-| mozjpeg | `object` or `false` | - | See [Options](https://github.com/imagemin/imagemin-mozjpeg) |
-| optipng | `object` or `false` | - | See [Options](https://github.com/imagemin/imagemin-optipng) |
-| pngquant | `object` or `false` | - | See [Options](https://github.com/imagemin/imagemin-pngquant) |
-| webp | `object` or `false` | - | See [Options](https://github.com/imagemin/imagemin-webp) |
+| params   | type                                  | default | default                                                      |
+| -------- | ------------------------------------- | ------- | ------------------------------------------------------------ |
+| verbose  | `boolean`                             | `true`  | Whether to output the compressed result in the console       |
+| filter   | `RegExp or (file: string) => boolean` | -       | Specify which resources are not compressed                   |
+| disable  | `boolean`                             | `false` | Whether to disable                                           |
+| svgo     | `object` or `false`                   | -       | See [Options](https://github.com/svg/svgo/#what-it-can-do)   |
+| gifsicle | `object` or `false`                   | -       | See [Options](https://github.com/imagemin/imagemin-gifsicle) |
+| mozjpeg  | `object` or `false`                   | -       | See [Options](https://github.com/imagemin/imagemin-mozjpeg)  |
+| optipng  | `object` or `false`                   | -       | See [Options](https://github.com/imagemin/imagemin-optipng)  |
+| pngquant | `object` or `false`                   | -       | See [Options](https://github.com/imagemin/imagemin-pngquant) |
+| webp     | `object` or `false`                   | -       | See [Options](https://github.com/imagemin/imagemin-webp)     |
 
 ## Example
 
@@ -106,11 +106,8 @@ export default () => {
 
 ```bash
 
-cd ./example
-
-yarn install
-
-yarn build
+npm run dev:play
+npm run dev:build
 
 ```
 
