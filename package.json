@@ -1,22 +1,21 @@
 {
-  "name": "vite-plugin-imagemin",
+  "name": "vite-plugin-imagemin-monorepo",
+  "private": true,
   "version": "0.5.3",
   "description": "A vite plugin for compressing image assets",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "license": "MIT",
   "author": "Vben",
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "dev": "npm run build -- --watch",
-    "build": "tsup src/index.ts --dts --format cjs,esm",
-    "prepublishOnly": "yarn build",
-    "log": "conventional-changelog -p angular -i CHANGELOG.md -s ",
-    "example:dev": "npm -C example run serve",
-    "example:build": "npm -C example run build"
+    "dev:play": "pnpm run dev --filter playground-basic",
+    "build:play": "pnpm run build --filter playground-basic",
+    "stub": "pnpm run prepack --filter ./packages -- --stub",
+    "postinstall": "pnpm run stub",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "lint:pretty": "pretty-quick --staged",
+    "lint:eslint": "eslint \"packages/**/*.{ts,tsx}\" --fix",
+    "prepare": "husky install",
+    "preinstall": "npx only-allow pnpm",
+    "test": "vitest"
   },
   "keywords": [
     "vite",
@@ -32,47 +31,46 @@
     "url": "https://github.com/anncwb/vite-plugin-imagemin/issues"
   },
   "homepage": "https://github.com/anncwb/vite-plugin-imagemin/tree/master/#readme",
-  "dependencies": {
-    "@types/imagemin": "^7.0.1",
-    "@types/imagemin-gifsicle": "^7.0.1",
-    "@types/imagemin-jpegtran": "^5.0.1",
-    "@types/imagemin-mozjpeg": "^8.0.1",
-    "@types/imagemin-optipng": "^5.2.1",
-    "@types/imagemin-svgo": "^10.0.0",
-    "@types/imagemin-webp": "^7.0.0",
-    "@types/svgo": "^2.6.0",
-    "chalk": "^4.1.2",
-    "debug": "^4.3.3",
-    "esbuild": "^0.14.8",
-    "fs-extra": "^10.0.0",
-    "imagemin": "^7.0.1",
-    "imagemin-gifsicle": "^7.0.0",
-    "imagemin-jpegtran": "^7.0.0",
-    "imagemin-mozjpeg": "^9.0.0",
-    "imagemin-optipng": "^8.0.0",
-    "imagemin-pngquant": "^9.0.2",
-    "imagemin-svgo": "^9.0.0",
-    "imagemin-webp": "^6.0.0",
-    "jpegtran-bin": "^6.0.1"
-  },
   "peerDependencies": {
     "vite": ">=2.0.0"
   },
   "resolutions": {
-    "bin-wrapper": "npm:bin-wrapper-china"
+    "bin-wrapper": "npm:bin-wrapper-china",
+    "gifsicle": "5.2.0"
   },
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/debug": "^4.1.7",
-    "@types/es-module-lexer": "^0.4.1",
-    "@types/fs-extra": "^9.0.13",
-    "@types/node": "^17.0.5",
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@types/html-minifier-terser": "^6.1.0",
+    "@types/jsdom": "^16.2.14",
+    "@types/node": "^17.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "commitizen": "^4.2.4",
     "conventional-changelog-cli": "^2.2.2",
-    "ini": "^2.0.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-html": "^6.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.2",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
-    "tsup": "^5.11.9",
-    "typescript": "^4.5.4",
-    "vite": "^2.7.7"
+    "tsup": "^5.11.11",
+    "typescript": "^4.5.5",
+    "unbuild": "^0.6.8",
+    "vite": "^2.7.13",
+    "vitest": "^0.2.4"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write --ignore-unknown"
+    ],
+    "packages/*/{src,types}/**/*.ts": [
+      "eslint --ext .ts"
+    ],
+    "packages/**/*.d.ts": [
+      "eslint --ext .ts"
+    ]
   }
 }

@@ -1,0 +1,78 @@
+{
+  "name": "vite-plugin-imagemin",
+  "version": "0.6.0",
+  "description": "A vite plugin for compressing image assets",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "license": "MIT",
+  "author": "Vben",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "pnpm unbuild --stub",
+    "build": "pnpm unbuild",
+    "prepublishOnly": "npm run build",
+    "prepack": "pnpm unbuild"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "imagemin",
+    "vben"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anncwb/vite-plugin-imagemin",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/anncwb/vite-plugin-imagemin/issues"
+  },
+  "homepage": "https://github.com/anncwb/vite-plugin-imagemin/tree/master/#readme",
+  "dependencies": {
+    "@types/imagemin": "^7.0.1",
+    "@types/imagemin-gifsicle": "^7.0.1",
+    "@types/imagemin-jpegtran": "^5.0.1",
+    "@types/imagemin-mozjpeg": "^8.0.1",
+    "@types/imagemin-optipng": "^5.2.1",
+    "@types/imagemin-svgo": "^10.0.0",
+    "@types/imagemin-webp": "^7.0.0",
+    "@types/svgo": "^2.6.1",
+    "chalk": "^4.1.2",
+    "debug": "^4.3.3",
+    "esbuild": "^0.14.14",
+    "fs-extra": "^10.0.0",
+    "imagemin": "^7.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^9.0.0",
+    "imagemin-webp": "^6.0.0",
+    "jpegtran-bin": "^6.0.1"
+  },
+  "peerDependencies": {
+    "vite": ">=2.0.0"
+  },
+  "resolutions": {
+    "bin-wrapper": "npm:bin-wrapper-china",
+    "gifsicle": "5.2.0"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/debug": "^4.1.7",
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^17.0.12",
+    "vite": "^2.7.13"
+  }
+}

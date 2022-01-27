@@ -1,7 +1,7 @@
-import { UserConfigExport } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import jsx from '@vitejs/plugin-vue-jsx';
-import viteImagemin from '../dist/index';
+import { UserConfigExport } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import jsx from '@vitejs/plugin-vue-jsx'
+import viteImagemin from 'vite-plugin-imagemin'
 
 export default (): UserConfigExport => {
   return {
@@ -39,5 +39,5 @@ export default (): UserConfigExport => {
         },
       }),
     ],
-  };
-};
+  }
+}
