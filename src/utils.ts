@@ -19,8 +19,7 @@ export const isNotFalse = (arg: unknown): arg is boolean => {
 export const isRegExp = (arg: unknown): arg is RegExp =>
   Object.prototype.toString.call(arg) === '[object RegExp]';
 
-
-  /*
+/*
  * Read all files in the specified folder, filter through regular rules, and return file path array
  * @param root Specify the folder path
  * [@param] reg Regular expression for filtering files, optional parameters
