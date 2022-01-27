@@ -59,7 +59,8 @@
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^9.0.0",
     "imagemin-webp": "^6.0.0",
-    "jpegtran-bin": "^6.0.1"
+    "jpegtran-bin": "^6.0.1",
+    "gifsicle": "5.2.0"
   },
   "peerDependencies": {
     "vite": ">=2.0.0"

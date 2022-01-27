@@ -1,42 +1,30 @@
 ## [0.5.3](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.5.2...v0.5.3) (2022-01-27)
 
-
+## [0.5.3](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.5.2...v0.5.3) (2022-01-27)
 
 ## [0.5.2](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.4.6...v0.5.2) (2022-01-24)
 
-
-
 # [0.5.0](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.4.6...v0.5.0) (2021-12-28)
-
 
 ### Performance Improvements
 
-* refactor image compression logic ([166a9a5](https://github.com/anncwb/vite-plugin-imagemin/commit/166a9a5dd62105a156aeabab91574ccd69f5f1be))
-
-
+- refactor image compression logic ([166a9a5](https://github.com/anncwb/vite-plugin-imagemin/commit/166a9a5dd62105a156aeabab91574ccd69f5f1be))
 
 ## [0.4.6](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.3.0...v0.4.6) (2021-09-27)
 
-
 ### Bug Fixes
 
-* readme ([094b500](https://github.com/anncwb/vite-plugin-imagemin/commit/094b500cc55f8e768e6ccf1394c9b46fbc5a8388))
-
+- readme ([094b500](https://github.com/anncwb/vite-plugin-imagemin/commit/094b500cc55f8e768e6ccf1394c9b46fbc5a8388))
 
 ### Features
 
-* support svgo2 ([aa81b70](https://github.com/anncwb/vite-plugin-imagemin/commit/aa81b706498567a7b43c19927802abafb2cc754d))
-
-
+- support svgo2 ([aa81b70](https://github.com/anncwb/vite-plugin-imagemin/commit/aa81b706498567a7b43c19927802abafb2cc754d))
 
 ## [0.4.4](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.3.0...v0.4.4) (2021-08-23)
 
-
 ### Features
 
-* support svgo2 ([aa81b70](https://github.com/anncwb/vite-plugin-imagemin/commit/aa81b706498567a7b43c19927802abafb2cc754d))
-
-
+- support svgo2 ([aa81b70](https://github.com/anncwb/vite-plugin-imagemin/commit/aa81b706498567a7b43c19927802abafb2cc754d))
 
 # [0.4.0](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.3.0...v0.4.0) (2021-07-05)
 
