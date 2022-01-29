@@ -1,6 +1,6 @@
 import type { Plugin, ResolvedConfig } from 'vite'
-import type { VitePluginImageMin } from '../src/types'
-import path from 'path'
+import type { VitePluginImageMin } from './types'
+import path from 'pathe'
 import fs from 'fs-extra'
 import {
   isNotFalse,
@@ -10,7 +10,7 @@ import {
   readAllFiles,
 } from '../src/utils'
 import chalk from 'chalk'
-import { debug as Debug } from 'debug'
+import Debug from 'debug'
 
 import imagemin from 'imagemin'
 import imageminGif from 'imagemin-gifsicle'
@@ -21,7 +21,7 @@ import imageminSvgo from 'imagemin-svgo'
 import imageminWebp from 'imagemin-webp'
 import imageminJpegTran from 'imagemin-jpegtran'
 
-const debug = Debug('vite-plugin-imagemin')
+const debug = Debug.debug('vite-plugin-imagemin')
 
 const extRE = /\.(png|jpeg|gif|jpg|bmp|svg)$/i
 
