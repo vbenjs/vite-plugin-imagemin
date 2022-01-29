@@ -1,3 +1,9 @@
+## [0.6.1](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.5.2...v0.6.1) (2022-01-29)
+
+### Bug Fixes
+
+- mjs support ([1285598](https://github.com/anncwb/vite-plugin-imagemin/commit/12855987d015925d482d5c0e4a5e5ebd48676156))
+
 ## [0.5.3](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.5.2...v0.5.3) (2022-01-27)
 
 ## [0.5.3](https://github.com/anncwb/vite-plugin-imagemin/compare/v0.5.2...v0.5.3) (2022-01-27)
