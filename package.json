@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-imagemin-monorepo",
   "private": true,
-  "version": "0.5.3",
+  "version": "0.6.1",
   "description": "A vite plugin for compressing image assets",
   "license": "MIT",
   "author": "Vben",
