@@ -73,7 +73,7 @@ export default function (options: VitePluginImageMin = {}) {
     enforce: 'post',
     configResolved(resolvedConfig) {
       config = resolvedConfig
-      outputPath = config.build.outDir
+      outputPath = path.resolve(path.resolve(config.root, config.build.outDir))
 
       // get public static assets directory: https://vitejs.dev/guide/assets.html#the-public-directory
       if (typeof config.publicDir === 'string') {
@@ -112,13 +112,12 @@ export default function (options: VitePluginImageMin = {}) {
 
         // try to find any static images in original static folder
         readAllFiles(publicDir).forEach((file) => {
-          filterFile(file, filter) && files.push(file)
+          filterFile(file, filter) && files.push(path.relative(publicDir, file))
         })
 
         if (files.length) {
-          const handles = files.map(async (publicFilePath: string) => {
+          const handles = files.map(async (filePath: string) => {
             // now convert the path to the output folder
-            const filePath = publicFilePath.replace(publicDir + path.sep, '')
             const fullFilePath = path.join(outputPath, filePath)
 
             if (fs.existsSync(fullFilePath) === false) {

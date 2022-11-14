@@ -1,6 +1,6 @@
 {
-  "name": "vite-plugin-imagemin",
-  "version": "0.6.1",
+  "name": "vite-plugin-bituq-imagemin",
+  "version": "0.6.2",
   "description": "A vite plugin for compressing image assets",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -31,13 +31,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/anncwb/vite-plugin-imagemin",
+    "url": "https://github.com/bituq/vite-plugin-imagemin",
     "directory": "packages/core"
   },
   "bugs": {
-    "url": "https://github.com/anncwb/vite-plugin-imagemin/issues"
+    "url": "https://github.com/bituq/vite-plugin-imagemin/issues"
   },
-  "homepage": "https://github.com/anncwb/vite-plugin-imagemin/tree/master/#readme",
+  "homepage": "https://github.com/bituq/vite-plugin-imagemin/tree/master/#readme",
   "dependencies": {
     "@types/imagemin": "^7.0.1",
     "@types/imagemin-gifsicle": "^7.0.1",
@@ -64,7 +64,7 @@
     "pathe": "^0.2.0"
   },
   "peerDependencies": {
-    "vite": ">=2.0.0"
+    "vite": ">=2.8.0"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",
@@ -75,6 +75,6 @@
     "@types/debug": "^4.1.7",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^17.0.12",
-    "vite": "^2.7.13"
+    "vite": "^2.8.4"
   }
 }
