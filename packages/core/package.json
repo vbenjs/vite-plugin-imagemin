@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-imagemin",
+  "name": "vite-plugin-bituq-imagemin",
   "version": "0.6.2",
   "description": "A vite plugin for compressing image assets",
   "main": "dist/index.cjs",
