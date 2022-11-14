@@ -73,7 +73,7 @@ export default function (options: VitePluginImageMin = {}) {
     enforce: 'post',
     configResolved(resolvedConfig) {
       config = resolvedConfig
-      outputPath = path.resolve(path.join(config.root, config.build.outDir));
+      outputPath = path.resolve(path.resolve(config.root, config.build.outDir))
 
       // get public static assets directory: https://vitejs.dev/guide/assets.html#the-public-directory
       if (typeof config.publicDir === 'string') {
