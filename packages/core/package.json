@@ -31,13 +31,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/anncwb/vite-plugin-imagemin",
+    "url": "https://github.com/bituq/vite-plugin-imagemin",
     "directory": "packages/core"
   },
   "bugs": {
-    "url": "https://github.com/anncwb/vite-plugin-imagemin/issues"
+    "url": "https://github.com/bituq/vite-plugin-imagemin/issues"
   },
-  "homepage": "https://github.com/anncwb/vite-plugin-imagemin/tree/master/#readme",
+  "homepage": "https://github.com/bituq/vite-plugin-imagemin/tree/master/#readme",
   "dependencies": {
     "@types/imagemin": "^7.0.1",
     "@types/imagemin-gifsicle": "^7.0.1",
