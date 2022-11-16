@@ -52,8 +52,13 @@ export default function (options: VitePluginImageMin = {}) {
         plugins: getImageminPlugins(options),
       })
 
-      const size = content.byteLength,
+      let size = content.byteLength,
         oldSize = buffer.byteLength
+
+      if (options.skipLargerFile && size > oldSize) {
+        content = buffer
+        size = oldSize
+      }
 
       tinyMap.set(filePath, {
         size: size / 1024,

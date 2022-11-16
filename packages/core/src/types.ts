@@ -28,6 +28,11 @@ export interface VitePluginImageMin {
    */
   disable?: boolean
   /**
+   * Whether to skip larger processed file
+   * @default: false
+   */
+  skipLargerFile?: boolean
+  /**
    * gif compression configuration
    * @default: {enabled:true}
    */

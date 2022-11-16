@@ -93,6 +93,7 @@ export default () => {
 | verbose  | `boolean`                             | `true`  | 是否在控制台输出压缩结果                                    |
 | filter   | `RegExp or (file: string) => boolean` | -       | 指定哪些资源不压缩                                          |
 | disable  | `boolean`                             | `false` | 是否禁用                                                    |
+| skipLargerFile  | `boolean`                             | `false` | 是否跳过让文件变大的处理（同时维持原文件）   |
 | svgo     | `object` or `false`                   | -       | 见 [Options](https://github.com/svg/svgo/#what-it-can-do)   |
 | gifsicle | `object` or `false`                   | -       | 见 [Options](https://github.com/imagemin/imagemin-gifsicle) |
 | mozjpeg  | `object` or `false`                   | -       | 见 [Options](https://github.com/imagemin/imagemin-mozjpeg)  |

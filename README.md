@@ -93,6 +93,7 @@ export default () => {
 | verbose  | `boolean`                             | `true`  | Whether to output the compressed result in the console       |
 | filter   | `RegExp or (file: string) => boolean` | -       | Specify which resources are not compressed                   |
 | disable  | `boolean`                             | `false` | Whether to disable                                           |
+| skipLargerFile  | `boolean`                             | `false` | Whether to skip larger processed file (while remainting the raw file)                                    |
 | svgo     | `object` or `false`                   | -       | See [Options](https://github.com/svg/svgo/#what-it-can-do)   |
 | gifsicle | `object` or `false`                   | -       | See [Options](https://github.com/imagemin/imagemin-gifsicle) |
 | mozjpeg  | `object` or `false`                   | -       | See [Options](https://github.com/imagemin/imagemin-mozjpeg)  |
