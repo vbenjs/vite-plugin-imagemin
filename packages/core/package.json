@@ -1,6 +1,6 @@
 {
-  "name": "vite-plugin-imagemin",
-  "version": "0.6.2",
+  "name": "vite-plugin-imagemin-lts",
+  "version": "0.6.3",
   "description": "A vite plugin for compressing image assets",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -13,15 +13,13 @@
     }
   },
   "license": "MIT",
-  "author": "Vben",
+  "author": "VaJoy",
   "files": [
     "dist"
   ],
   "scripts": {
-    "dev": "pnpm unbuild --stub",
-    "build": "pnpm unbuild",
-    "prepublishOnly": "npm run build",
-    "prepack": "pnpm unbuild"
+    "build": "cd packages/core && npx unbuild",
+    "preInstall": "cd packages/core && yarn install"
   },
   "keywords": [
     "vite",
@@ -31,13 +29,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/anncwb/vite-plugin-imagemin",
+    "url": "https://github.com/VaJoy/vite-plugin-imagemin-lts",
     "directory": "packages/core"
   },
   "bugs": {
-    "url": "https://github.com/anncwb/vite-plugin-imagemin/issues"
+    "url": "https://github.com/VaJoy/vite-plugin-imagemin-lts/issues"
   },
-  "homepage": "https://github.com/anncwb/vite-plugin-imagemin/tree/master/#readme",
+  "homepage": "https://github.com/VaJoy/vite-plugin-imagemin-lts/tree/master/#readme",
   "dependencies": {
     "@types/imagemin": "^7.0.1",
     "@types/imagemin-gifsicle": "^7.0.1",
@@ -61,7 +59,8 @@
     "imagemin-svgo": "^9.0.0",
     "imagemin-webp": "^6.0.0",
     "jpegtran-bin": "^6.0.1",
-    "pathe": "^0.2.0"
+    "pathe": "^0.2.0",
+    "unbuild": "^1.0.1"
   },
   "peerDependencies": {
     "vite": ">=2.0.0"

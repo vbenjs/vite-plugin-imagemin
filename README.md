@@ -1,10 +1,12 @@
-# vite-plugin-imagemin
+# vite-plugin-imagemin-lts
 
 **English** | [中文](./README.zh_CN.md)
 
 [![npm][npm-img]][npm-url] [![node][node-img]][node-url]
 
 A vite plugin for compressing image assets
+
+Forked from [vite-plugin-imagemin](https://github.com/vbenjs/vite-plugin-imagemin) with long-time-support.
 
 ## Install (yarn or npm)
 
@@ -13,43 +15,21 @@ A vite plugin for compressing image assets
 **vite version:** >=2.0.0
 
 ```
-yarn add vite-plugin-imagemin -D
+yarn add vite-plugin-imagemin-lts -D
 ```
 
 or
 
 ```
-npm i vite-plugin-imagemin -D
+npm i vite-plugin-imagemin-lts -D
 ```
-
-### China installation note
-
-Because imagemin is not easy to install in China. Several solutions are now available
-
-1. Use yarn to configure in package.json (recommended)
-
-```json
-"resolutions": {
-    "bin-wrapper": "npm:bin-wrapper-china"
-  },
-
-```
-
-2. Use npm, add the following configuration to the computer host file
-
-```bash
-
-199.232.4.133 raw.githubusercontent.com
-```
-
-3. Install with cnpm (not recommended)
 
 ## Usage
 
 - Configuration plugin in vite.config.ts
 
 ```ts
-import viteImagemin from 'vite-plugin-imagemin'
+import viteImagemin from 'vite-plugin-imagemin-lts'
 
 export default () => {
   return {
@@ -101,30 +81,16 @@ export default () => {
 | pngquant | `object` or `false`                   | -       | See [Options](https://github.com/imagemin/imagemin-pngquant) |
 | webp     | `object` or `false`                   | -       | See [Options](https://github.com/imagemin/imagemin-webp)     |
 
-## Example
+## Develop
 
-**Run Example**
-
-```bash
-
-npm run dev:play
-npm run dev:build
+### Install packages
 
 ```
+cd packages/core && yarn install
+```
 
-## Sample project
+### Build
 
-[Vben Admin](https://github.com/anncwb/vue-vben-admin)
-
-## License
-
-MIT
-
-## Inspiration
-
-[vite-plugin-compress](https://github.com/alloc/vite-plugin-compress)
-
-[npm-img]: https://img.shields.io/npm/v/vite-plugin-imagemin.svg
-[npm-url]: https://npmjs.com/package/vite-plugin-imagemin
-[node-img]: https://img.shields.io/node/v/vite-plugin-imagemin.svg
-[node-url]: https://nodejs.org/en/about/releases/
+```
+cd packages/core && yarn build
+```

@@ -1,10 +1,10 @@
-# vite-plugin-imagemin
+# vite-plugin-imagemin-lts
 
 **中文** | [English](./README.md)
 
 [![npm][npm-img]][npm-url] [![node][node-img]][node-url]
 
-一个压缩图片资产的 vite 插件
+一个压缩图片资产的 vite 插件，Forked 自[vite-plugin-imagemin](https://github.com/vbenjs/vite-plugin-imagemin)，原作者已经弃坑了，只能独立发包。
 
 ## 安装 (yarn or npm)
 
@@ -13,13 +13,13 @@
 **vite version:** >=2.0.0
 
 ```
-yarn add vite-plugin-imagemin -D
+yarn add vite-plugin-imagemin-lts -D
 ```
 
 or
 
 ```
-npm i vite-plugin-imagemin -D
+npm i vite-plugin-imagemin-lts -D
 ```
 
 ### 中国安装注意
@@ -49,7 +49,7 @@ npm i vite-plugin-imagemin -D
 - vite.config.ts 中的配置插件
 
 ```ts
-import viteImagemin from 'vite-plugin-imagemin'
+import viteImagemin from 'vite-plugin-imagemin-lts'
 
 export default () => {
   return {
@@ -101,28 +101,15 @@ export default () => {
 | pngquant | `object` or `false`                   | -       | 见 [Options](https://github.com/imagemin/imagemin-pngquant) |
 | webp     | `object` or `false`                   | -       | 见 [Options](https://github.com/imagemin/imagemin-webp)     |
 
-## 示例
+## 维护
 
-**运行示例**
+### 安装
 
-```bash
-npm run dev:play
-npm run dev:build
+```
+cd packages/core && yarn install
 ```
 
-## 示例项目
+### 构建
 
-[Vben Admin](https://github.com/anncwb/vue-vben-admin)
+在 `packages/core` 下执行 `yarn build`
 
-## License
-
-MIT
-
-## 灵感
-
-[vite-plugin-compress](https://github.com/alloc/vite-plugin-compress)
-
-[npm-img]: https://img.shields.io/npm/v/vite-plugin-style-import.svg
-[npm-url]: https://npmjs.com/package/vite-plugin-style-import
-[node-img]: https://img.shields.io/node/v/vite-plugin-style-import.svg
-[node-url]: https://nodejs.org/en/about/releases/

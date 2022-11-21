@@ -14,7 +14,6 @@
     "lint:pretty": "pretty-quick --staged",
     "lint:eslint": "eslint \"packages/**/*.{ts,tsx}\" --fix",
     "prepare": "husky install",
-    "preinstall": "npx only-allow pnpm",
     "test": "vitest"
   },
   "keywords": [
@@ -58,7 +57,7 @@
     "rimraf": "^3.0.2",
     "tsup": "^5.11.11",
     "typescript": "^4.5.5",
-    "unbuild": "^0.6.8",
+    "unbuild": "^1.0.1",
     "vite": "^2.7.13",
     "vitest": "^0.2.4"
   },

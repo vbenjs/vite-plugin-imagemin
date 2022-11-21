@@ -52,8 +52,8 @@ export default function (options: VitePluginImageMin = {}) {
         plugins: getImageminPlugins(options),
       })
 
-      let size = content.byteLength,
-        oldSize = buffer.byteLength
+      let size = content.byteLength
+      const oldSize = buffer.byteLength
 
       if (options.skipLargerFile && size > oldSize) {
         content = buffer
