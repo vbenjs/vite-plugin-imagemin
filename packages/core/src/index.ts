@@ -20,6 +20,7 @@ import imageminJpeg from 'imagemin-mozjpeg'
 import imageminSvgo from 'imagemin-svgo'
 import imageminWebp from 'imagemin-webp'
 import imageminJpegTran from 'imagemin-jpegtran'
+import { BinaryLike, createHash } from 'crypto'
 
 const debug = Debug.debug('vite-plugin-imagemin')
 
@@ -30,13 +31,20 @@ export default function (options: VitePluginImageMin = {}) {
   let publicDir: string
   let config: ResolvedConfig
 
-  const { disable = false, filter = extRE, verbose = true } = options
+  const { disable = false, filter = extRE, verbose = true, cacheDir } = options
 
   if (disable) {
     return {} as any
   }
 
   debug('plugin options:', options)
+
+  let cacheDirReady: Promise<void>
+  if (cacheDir) {
+    cacheDirReady = fs.existsSync(cacheDir)
+      ? Promise.resolve()
+      : fs.mkdirp(cacheDir)
+  }
 
   const mtimeCache = new Map<string, number>()
   let tinyMap = new Map<
@@ -48,9 +56,21 @@ export default function (options: VitePluginImageMin = {}) {
     let content: Buffer
 
     try {
-      content = await imagemin.buffer(buffer, {
-        plugins: getImageminPlugins(options),
-      })
+      const { plugins, ...pluginOptions } = getImageminPlugins(options)
+      const cachedFile =
+        cacheDir &&
+        path.join(cacheDir, await hash(JSON.stringify(pluginOptions), buffer))
+      if (cachedFile && fs.existsSync(cachedFile)) {
+        content = await fs.readFile(cachedFile)
+      } else {
+        content = await imagemin.buffer(buffer, {
+          plugins,
+        })
+        if (cachedFile) {
+          await cacheDirReady
+          await fs.writeFile(cachedFile, content)
+        }
+      }
 
       const size = content.byteLength,
         oldSize = buffer.byteLength
@@ -210,9 +230,7 @@ function filterFile(
 }
 
 // imagemin compression plugin configuration
-function getImageminPlugins(
-  options: VitePluginImageMin = {},
-): imagemin.Plugin[] {
+function getImageminPlugins(options: VitePluginImageMin = {}) {
   const {
     gifsicle = true,
     webp = false,
@@ -272,5 +290,22 @@ function getImageminPlugins(
     const opt = isBoolean(jpegTran) ? undefined : jpegTran
     plugins.push(imageminJpegTran(opt))
   }
-  return plugins
+  return {
+    plugins,
+    gifsicle,
+    webp,
+    mozjpeg,
+    pngquant,
+    optipng,
+    svgo,
+    jpegTran,
+  }
+}
+
+async function hash(...things: BinaryLike[]) {
+  const hash = createHash('sha1')
+  for (const thing of things) {
+    hash.update(thing)
+  }
+  return hash.digest('hex')
 }
