@@ -28,6 +28,11 @@ export interface VitePluginImageMin {
    */
   disable?: boolean
   /**
+   * If provided, caches optimized images within this dir as files named the SHA-1 hash of each uncompressed image.
+   * @default: undefined
+   */
+  cacheDir?: string
+  /**
    * gif compression configuration
    * @default: {enabled:true}
    */
